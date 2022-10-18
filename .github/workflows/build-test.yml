@@ -78,7 +78,8 @@ jobs:
         with:
           # push: false
           push: true
-          load: true
+          # load: true
+          load: false
           context: .
           file: ./${{ steps.short-version.outputs.result }}/${{ matrix.variant }}/Dockerfile
           tags: node:${{ matrix.version }}-${{ matrix.variant }}
