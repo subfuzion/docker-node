@@ -15,7 +15,7 @@ on:
 jobs:
   pr:
     runs-on: ubuntu-latest
-    if: github.repository_owner == 'nodejs' && github.event.pull_request.merged_by != ''
+    if: github.repository_owner == 'subfuzion' && github.event.pull_request.merged_by != ''
 
     steps:
       - name: Checkout the docker-node repo
@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           path: official-images
-          repository: docker-library/official-images
+          repository: subfuzion/official-images
 
       - name: Generate Stackbrew for diff
         run: |
@@ -41,7 +41,7 @@ jobs:
         uses: peter-evans/create-pull-request@v4
         with:
           token: ${{ secrets.GH_API_TOKEN }}
-          push-to-fork: nodejs/official-images
+          push-to-fork: subfuzion/official-images
           path: official-images
           branch: node
           commit-message: "Node: ${{ github.event.pull_request.title }}"
